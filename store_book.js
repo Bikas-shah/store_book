@@ -6,6 +6,27 @@ app.listen(8000,()=>{
     console.log('listening to port 8000');
 })
 
+var i = 0;
+
+// //#################### GET  ##########################
+app.get('/allbooks',async function(req,res){
+    res.json({books});
+});
+
+// //#################### POST  ##########################
+app.post('/add',async (req, res) => {
+
+    let newBook = {
+    "id":++i,
+    "name":req.body.name,
+    "author":req.body.author,
+    "edition":req.body.edition
+    }
+    books.push(newBook);
+    console.log(books);
+    res.json(newBook);
+})
+
 // //#################### PUT  ##########################
 app.put('/books/:id',function(req,res){
     //reading id called params
